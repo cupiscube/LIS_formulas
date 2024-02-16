@@ -8,6 +8,11 @@ import pandas.io.sql as psql
 from sqlalchemy import create_engine
 from sqlalchemy.engine import URL
 
+# Дабы в консоль не выводилось предупреждение
+import warnings
+warnings.filterwarnings("ignore", 'This pattern has match groups')
+warnings.filterwarnings("ignore", 'This pattern is interpreted as a regular expression')
+
 
 # wp_name, work_name = argv
 wp_name = None
@@ -121,7 +126,12 @@ def app():
             value_indxs = []
             while i != -1:
                 # print(target_func[sum(value_indxs)::])
-                i = target_func[sum(value_indxs) + 1::].find('#')
+                try:
+                    i = target_func[sum(value_indxs) + 1::].find('#')
+                except:
+                    i = -1
+                    print(f'Внимание! Ошибка! Результат {name} в работе {work} не обновлен!!!')
+                    print(target_func)
                 value_indxs.append(i + 1)
             # last element is bad (-1 + 1 = 0)
             value_indxs.pop(-1)
