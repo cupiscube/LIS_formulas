@@ -55,7 +55,7 @@ for work_ in wp:
     # print(left_brekits)
     # find the last right brekit
     current_right_brekit = work[::].rfind(']')
-    new_work = work[:current_left_brekit:] + '[' + wp_name + ']'
+    new_work = work[:current_left_brekit:] + wp_name + ']'
     new_works_name.append([new_work, work_[1]])
 
 # Update values
