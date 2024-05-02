@@ -56,3 +56,8 @@ def change_wp_name():
             connection.commit()
 
     return "Успех!"
+
+
+if __name__ == '__main__':
+    change_wp_name()
+    print('Скрипт закончил работу! \nВсе изменения применены, обратного пути нет!')
